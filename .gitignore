@@ -1,0 +1,41 @@
+# Laravel & PHP
+/vendor/
+node_modules/
+npm-debug.log
+yarn-error.log
+composer.lock
+.env
+.phpunit.result.cache
+.php_cs.cache
+Homestead.yaml
+Homestead.json
+.env.testing
+.phpunit.cache
+
+# Laravel specific
+/public/hot
+/public/storage
+/storage/*.key
+/storage/app/public
+/storage/framework/cache/data
+/storage/framework/sessions
+/storage/framework/testing
+/storage/framework/views
+/storage/logs
+/storage/debugbar
+/storage/*.cache
+/storage/*.log
+/storage/*.pid
+
+# IDE & OS
+/.idea
+/.vscode
+/.history
+.DS_Store
+Thumbs.db
+
+# Other
+*.bak
+*.swp
+*.swo
+*.tmp

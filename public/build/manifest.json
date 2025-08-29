@@ -1,0 +1,31 @@
+{
+  "_axios-3a665b0f.js": {
+    "file": "assets/axios-3a665b0f.js"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-922843bf.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-75b30d63.js",
+    "imports": [
+      "_axios-3a665b0f.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  },
+  "resources/js/echo.js": {
+    "file": "assets/echo-97914470.js",
+    "imports": [
+      "_axios-3a665b0f.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/echo.js"
+  },
+  "resources/js/global-sound.js": {
+    "file": "assets/global-sound-e13debc5.js",
+    "isEntry": true,
+    "src": "resources/js/global-sound.js"
+  }
+}
