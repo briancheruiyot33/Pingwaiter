@@ -4,8 +4,12 @@
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "18"
+    },
+    "ghcr.io/devcontainers/features/php-extensions:1": {
+      "extensions": "bcmath, mbstring, xml, curl, zip"
     }
   },
+  
   "postCreateCommand": "composer install",
   "customizations": {
     "vscode": {
