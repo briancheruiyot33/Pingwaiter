@@ -1,25 +1,38 @@
 {
-  "name": "Laravel Dev",
-  "image": "mcr.microsoft.com/devcontainers/php:8.2",
+  "name": "Laravel DevContainer",
+  "dockerFile": "Dockerfile",
+
+  // Forward ports (Laravel + Vite)
+  "forwardPorts": [8000, 5173],
+
+  // Run when container starts
+  "postCreateCommand": "composer install && npm install && cp .env.example .env && php artisan key:generate",
+
+  // Add Codespaces features (optional)
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "18"
-    }
+    },
+    "ghcr.io/devcontainers/features/php:1": {
+      "version": "8.2"
+    },
+    "ghcr.io/devcontainers/features/mysql:1": {
+      "version": "8.0",
+      "password": "password"
+    },
+    "ghcr.io/devcontainers/features/composer:1": {}
   },
-  
-  "postCreateCommand": "composer install",
+
+  // Codespaces settings
   "customizations": {
     "vscode": {
       "extensions": [
         "bmewburn.vscode-intelephense-client",
+        "ms-azuretools.vscode-docker",
         "onecentlin.laravel-blade",
         "onecentlin.laravel5-snippets",
-        "esbenp.prettier-vscode"
+        "amiralizadeh9480.laravel-extra-intellisense"
       ]
     }
-  },
-  "forwardPorts": [8000, 3306],
-  "remoteUser": "vscode",
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "app"
+  }
 }
