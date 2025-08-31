@@ -2,37 +2,38 @@
   "name": "Laravel DevContainer",
   "dockerFile": "Dockerfile",
 
-  // Forward ports (Laravel + Vite)
+  // Forward ports (Laravel = 8000, Vite = 5173)
   "forwardPorts": [8000, 5173],
 
-  // Run when container starts
-  "postCreateCommand": "composer install && npm install && cp .env.example .env && php artisan key:generate",
+  // Run after container builds
+  "postCreateCommand": "composer install && npm install && cp -n .env.example .env && php artisan key:generate && touch database/database.sqlite",
 
-  // Add Codespaces features (optional)
-  "features": {
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "18"
-    },
-    "ghcr.io/devcontainers/features/php:1": {
-      "version": "8.2"
-    },
-    "ghcr.io/devcontainers/features/mysql:1": {
-      "version": "8.0",
-      "password": "password"
-    },
-    "ghcr.io/devcontainers/features/composer:1": {}
-  },
-
-  // Codespaces settings
+  // Codespaces/VSCODE extensions
   "customizations": {
     "vscode": {
       "extensions": [
         "bmewburn.vscode-intelephense-client",
-        "ms-azuretools.vscode-docker",
         "onecentlin.laravel-blade",
         "onecentlin.laravel5-snippets",
-        "amiralizadeh9480.laravel-extra-intellisense"
+        "amiralizadeh9480.laravel-extra-intellisense",
+        "ms-azuretools.vscode-docker"
       ]
+    }
+  },
+
+  // Optional MySQL service (disabled by default)
+  "runServices": [],
+  "services": {
+    "mysql": {
+      "image": "mysql:8.0",
+      "restart": "unless-stopped",
+      "environment": {
+        "MYSQL_ROOT_PASSWORD": "password",
+        "MYSQL_DATABASE": "laravel",
+        "MYSQL_USER": "laravel",
+        "MYSQL_PASSWORD": "laravel"
+      },
+      "ports": ["3306:3306"]
     }
   }
 }
